@@ -7,12 +7,7 @@ import numpy as np
 import seaborn as sns
 import os 
 
-path = "dataset/AdvertisingData.xls"
-df = pd.read_excel(path)
-df = df.drop(columns = ['Downloads', 'Watchtime', 'Destination URL', 'Hosting URL'])
-df.to_csv("dataset/Advertising.csv", index=False)
-test = pd.read_csv("dataset/Advertising.csv", low_memory = False, usecols = lambda c: not c.startswith('Unnamed:'))
-
+df = pd.read_csv("dataset/Advertising.csv", low_memory = False, usecols = lambda c: not c.startswith('Unnamed:'))
 
 #print(test.axes)
 #TODO: How to get dates from date column
@@ -35,10 +30,11 @@ for x in range(len(df)):
   if df.loc[x, 'AdType'] == 'Google Ad Words':
     row_idx.append(x)
 
-google_df = test.loc[row_idx]
+google_df = df.loc[row_idx]
 print(google_df.Region.unique())
 #impressions seem to indicate pricing
 
+  
 
 '''
 print(segments, df.Segment.nunique())
