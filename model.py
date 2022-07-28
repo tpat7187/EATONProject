@@ -14,13 +14,36 @@ df.to_csv("dataset/Advertising.csv", index=False)
 test = pd.read_csv("dataset/Advertising.csv", low_memory = False, usecols = lambda c: not c.startswith('Unnamed:'))
 
 
-print(test.axes)
+#print(test.axes)
+#TODO: How to get dates from date column
+#Current Interest: Google Ad Sense (Curret/Exact Matches)
 
 
-#if you want to see the test of the plot
-#sns.relplot(x="Impressions", y = "Clicks", data = test)
-#plt.show()
 
+#Uniques: 
+ad_types = df.AdType.unique()
+segments = df.Segment.unique()
+publications = df.Publication.nunique()
+treatments = df.Treatment.unique()
+
+#ad types -> ad subtype
+#print(ad_types, df.AdType.nunique())
+#print(treatments, df.Treatment.nunique())
+
+row_idx = []
+for x in range(len(df)):
+  if df.loc[x, 'AdType'] == 'Google Ad Words':
+    row_idx.append(x)
+
+google_df = test.loc[row_idx]
+print(google_df.Region.unique())
+#impressions seem to indicate pricing
+
+
+'''
+print(segments, df.Segment.nunique())
+print('Publications', publications)
+'''
 
 
 
