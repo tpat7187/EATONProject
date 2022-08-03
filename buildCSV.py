@@ -5,7 +5,7 @@ import os
 def main():
   path = "dataset/AdvertisingData.xls"
   df = pd.read_excel(path)
-  df = df.drop(columns = ['Downloads', 'Watchtime', 'Destination URL', 'Hosting URL'])
+  df = df.drop(columns = ['Downloads', 'Watchtime', 'Destination URL', 'Hosting URL', 'Placement_ID'])
   df.to_csv("dataset/Advertising.csv", index=False)
 
 
