@@ -10,6 +10,7 @@ def main():
   df['Month'] = pd.DatetimeIndex(df['Week']).month
   df['Num_Week'] = pd.DatetimeIndex(df['Week']).weekofyear
   df["BuyingBasis"].replace('instance', 'Instance', inplace = True)
+  df["Publication"].replace('Programmatic buying', 'Programmatic Buying', inplace = True)
   df["AdType"].replace('Social email ', 'Social email', inplace = True)
   # filling null values for engagement and impressions
   df['Impressions'] = df['Impressions'].fillna(0) 
